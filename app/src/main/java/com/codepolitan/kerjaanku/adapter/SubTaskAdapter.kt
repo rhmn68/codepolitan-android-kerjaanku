@@ -46,5 +46,6 @@ class SubTaskAdapter : RecyclerView.Adapter<SubTaskAdapter.ViewHolder>() {
 
     fun setData(subTasks: List<SubTask>){
         this.subTasks = subTasks
+        notifyDataSetChanged()
     }
 }
