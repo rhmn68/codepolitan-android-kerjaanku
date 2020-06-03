@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.codepolitan.kerjaanku.R
 import com.codepolitan.kerjaanku.views.home.HomeFragment
-import com.codepolitan.kerjaanku.views.taskcomplete.TaskCompleteragment
+import com.codepolitan.kerjaanku.views.taskcomplete.TaskCompleteFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.action_task_complete -> {
-                    openHomeFragment(TaskCompleteragment())
+                    openHomeFragment(TaskCompleteFragment())
                     return@setOnNavigationItemSelectedListener true
                 }
             }

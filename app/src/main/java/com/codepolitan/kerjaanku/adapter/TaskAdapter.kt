@@ -1,9 +1,9 @@
 package com.codepolitan.kerjaanku.adapter
 
+import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.codepolitan.kerjaanku.R
 import com.codepolitan.kerjaanku.model.Task
@@ -14,7 +14,13 @@ class TaskAdapter : RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
         fun bind(task: Task) {
             itemView.tvTitleTask.text = task.mainTask?.title
 
-            if (task.mainTask?.date != null && task.mainTask.date.isNotEmpty()){
+            if (task.mainTask?.isComplete!!){
+                completeTask()
+            }else{
+                inCompleteTask()
+            }
+
+            if (task.mainTask.date != null && task.mainTask.date.isNotEmpty()){
                 showDateTask()
                 itemView.tvDateTask.text = task.mainTask.date
             }else{
@@ -32,7 +38,7 @@ class TaskAdapter : RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
             }
 
             itemView.btnDoneTask.setOnClickListener {
-                if (task.mainTask?.isComplete!!){
+                if (task.mainTask.isComplete){
                     inCompleteTask()
                     task.mainTask.isComplete = false
                 }else{
@@ -44,10 +50,12 @@ class TaskAdapter : RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
 
         private fun completeTask() {
             itemView.btnDoneTask.setImageResource(R.drawable.ic_complete_task_black_24dp)
+            itemView.tvTitleTask.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
         }
 
         private fun inCompleteTask() {
             itemView.btnDoneTask.setImageResource(R.drawable.ic_done_task_black_24dp)
+            itemView.tvTitleTask.paintFlags = Paint.ANTI_ALIAS_FLAG
         }
 
         private fun hideSubTasks() {

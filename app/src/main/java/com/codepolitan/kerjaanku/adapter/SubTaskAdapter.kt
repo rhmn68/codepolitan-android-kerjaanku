@@ -1,5 +1,6 @@
 package com.codepolitan.kerjaanku.adapter
 
+import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,12 @@ class SubTaskAdapter : RecyclerView.Adapter<SubTaskAdapter.ViewHolder>() {
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
         fun bind(subTask: SubTask) {
             itemView.tvTitleSubTask.text = subTask.title
+
+            if (subTask.isComplete){
+                completeSubTask()
+            }else{
+                inCompleteSubTask()
+            }
 
             itemView.btnDoneSubTask.setOnClickListener {
                 if (subTask.isComplete){
@@ -26,10 +33,12 @@ class SubTaskAdapter : RecyclerView.Adapter<SubTaskAdapter.ViewHolder>() {
 
         private fun completeSubTask() {
             itemView.btnDoneSubTask.setImageResource(R.drawable.ic_complete_task_black_24dp)
+            itemView.tvTitleSubTask.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
         }
 
         private fun inCompleteSubTask() {
             itemView.btnDoneSubTask.setImageResource(R.drawable.ic_done_task_black_24dp)
+            itemView.tvTitleSubTask.paintFlags = Paint.ANTI_ALIAS_FLAG
         }
     }
 

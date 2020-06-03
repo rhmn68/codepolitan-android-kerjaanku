@@ -6,12 +6,10 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="coba" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ee98d835-040f-4440-990a-869f899a082f" name="Default Changelist" comment="" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,14 +28,17 @@
       </state>
     </system>
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="KerjaanKu" />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="layoutResourceFile_vertical" />
         <option value="resourceFile" />
-        <option value="layoutResourceFile" />
         <option value="Kotlin Object" />
         <option value="Kotlin File" />
+        <option value="layoutResourceFile" />
+        <option value="layoutResourceFile_vertical" />
       </list>
     </option>
   </component>
@@ -46,6 +47,10 @@
   </component>
   <component name="ProjectId" id="1cfiA3fdQ49WN409NRlXhLqkByg" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res" />
@@ -68,18 +73,6 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/src/main/res" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
@@ -171,5 +164,35 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="358" y="92" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1591162204440">
+      <screen x="0" y="23" width="1366" height="745" />
+    </state>
+    <state x="358" y="92" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1366.745@0.23.1366.745" timestamp="1591162204440" />
+    <state x="271" y="152" key="AndroidCreateResourceFileDialog" timestamp="1591163081513">
+      <screen x="0" y="23" width="1366" height="745" />
+    </state>
+    <state x="271" y="152" key="AndroidCreateResourceFileDialog/0.23.1366.745@0.23.1366.745" timestamp="1591163081513" />
+    <state x="532" y="221" key="AndroidCreateXmlResourceDialog" timestamp="1591163263799">
+      <screen x="0" y="23" width="1366" height="745" />
+    </state>
+    <state x="532" y="221" key="AndroidCreateXmlResourceDialog/0.23.1366.745@0.23.1366.745" timestamp="1591163263799" />
+    <state width="1312" height="257" key="GridCell.Tab.0.bottom" timestamp="1591162167659">
+      <screen x="0" y="23" width="1366" height="745" />
+    </state>
+    <state width="1312" height="257" key="GridCell.Tab.0.bottom/0.23.1366.745@0.23.1366.745" timestamp="1591162167659" />
+    <state width="1312" height="257" key="GridCell.Tab.0.center" timestamp="1591162167658">
+      <screen x="0" y="23" width="1366" height="745" />
+    </state>
+    <state width="1312" height="257" key="GridCell.Tab.0.center/0.23.1366.745@0.23.1366.745" timestamp="1591162167658" />
+    <state width="1312" height="257" key="GridCell.Tab.0.left" timestamp="1591162167658">
+      <screen x="0" y="23" width="1366" height="745" />
+    </state>
+    <state width="1312" height="257" key="GridCell.Tab.0.left/0.23.1366.745@0.23.1366.745" timestamp="1591162167658" />
+    <state width="1312" height="257" key="GridCell.Tab.0.right" timestamp="1591162167659">
+      <screen x="0" y="23" width="1366" height="745" />
+    </state>
+    <state width="1312" height="257" key="GridCell.Tab.0.right/0.23.1366.745@0.23.1366.745" timestamp="1591162167659" />
   </component>
 </project>

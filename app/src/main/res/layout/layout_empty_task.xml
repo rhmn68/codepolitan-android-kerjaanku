@@ -21,7 +21,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tell me what you want to do?"
+        android:text="@string/tell_me_what_you_want_to_do"
         android:layout_marginTop="4dp"/>
 
 </LinearLayout>
