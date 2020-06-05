@@ -5,8 +5,10 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.codepolitan.kerjaanku.R
 import com.codepolitan.kerjaanku.views.home.HomeFragment
+import com.codepolitan.kerjaanku.views.newtask.NewTaskActivity
 import com.codepolitan.kerjaanku.views.taskcomplete.TaskCompleteFragment
 import kotlinx.android.synthetic.main.activity_main.*
+import org.jetbrains.anko.startActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,6 +17,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         setupBottomNavigation()
+        onClick()
+    }
+
+    private fun onClick() {
+        btnAddTask.setOnClickListener {
+            startActivity<NewTaskActivity>()
+        }
     }
 
     private fun setupBottomNavigation() {

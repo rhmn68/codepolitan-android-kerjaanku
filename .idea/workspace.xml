@@ -34,11 +34,11 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="resourceFile" />
         <option value="Kotlin Object" />
-        <option value="Kotlin File" />
-        <option value="layoutResourceFile" />
         <option value="layoutResourceFile_vertical" />
+        <option value="layoutResourceFile" />
+        <option value="resourceFile" />
+        <option value="Kotlin File" />
       </list>
     </option>
   </component>
@@ -60,6 +60,9 @@
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
+    <key name="android.template.1406459614">
+      <recent name="com.codepolitan.kerjaanku.views.newtask" />
+    </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
       <recent name="com.codepolitan.kerjaanku.model" />
       <recent name="com.codepolitan.kerjaanku.views.main" />
@@ -166,18 +169,22 @@
     </ignored-roots>
   </component>
   <component name="WindowStateProjectService">
+    <state x="404" y="53" key="#com.intellij.ide.util.MemberChooser" timestamp="1591321340062">
+      <screen x="0" y="23" width="1366" height="745" />
+    </state>
+    <state x="404" y="53" key="#com.intellij.ide.util.MemberChooser/0.23.1366.745@0.23.1366.745" timestamp="1591321340062" />
     <state x="358" y="92" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1591162204440">
       <screen x="0" y="23" width="1366" height="745" />
     </state>
     <state x="358" y="92" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1366.745@0.23.1366.745" timestamp="1591162204440" />
-    <state x="271" y="152" key="AndroidCreateResourceFileDialog" timestamp="1591163081513">
+    <state x="271" y="152" key="AndroidCreateResourceFileDialog" timestamp="1591320313940">
       <screen x="0" y="23" width="1366" height="745" />
     </state>
-    <state x="271" y="152" key="AndroidCreateResourceFileDialog/0.23.1366.745@0.23.1366.745" timestamp="1591163081513" />
-    <state x="532" y="221" key="AndroidCreateXmlResourceDialog" timestamp="1591163263799">
+    <state x="271" y="152" key="AndroidCreateResourceFileDialog/0.23.1366.745@0.23.1366.745" timestamp="1591320313940" />
+    <state x="532" y="221" key="AndroidCreateXmlResourceDialog" timestamp="1591319791362">
       <screen x="0" y="23" width="1366" height="745" />
     </state>
-    <state x="532" y="221" key="AndroidCreateXmlResourceDialog/0.23.1366.745@0.23.1366.745" timestamp="1591163263799" />
+    <state x="532" y="221" key="AndroidCreateXmlResourceDialog/0.23.1366.745@0.23.1366.745" timestamp="1591319791362" />
     <state width="1312" height="257" key="GridCell.Tab.0.bottom" timestamp="1591162167659">
       <screen x="0" y="23" width="1366" height="745" />
     </state>
@@ -194,5 +201,9 @@
       <screen x="0" y="23" width="1366" height="745" />
     </state>
     <state width="1312" height="257" key="GridCell.Tab.0.right/0.23.1366.745@0.23.1366.745" timestamp="1591162167659" />
+    <state x="264" y="23" width="838" height="1032" key="search.everywhere.popup" timestamp="1591318805533">
+      <screen x="0" y="23" width="1366" height="745" />
+    </state>
+    <state x="264" y="23" width="838" height="1032" key="search.everywhere.popup/0.23.1366.745@0.23.1366.745" timestamp="1591318805533" />
   </component>
 </project>
