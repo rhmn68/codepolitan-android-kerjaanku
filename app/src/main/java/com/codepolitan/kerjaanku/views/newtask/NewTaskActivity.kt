@@ -1,14 +1,12 @@
 package com.codepolitan.kerjaanku.views.newtask
 
 import android.app.DatePickerDialog
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.DatePicker
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.codepolitan.kerjaanku.R
 import com.codepolitan.kerjaanku.adapter.AddSubTaskAdapter
 import com.codepolitan.kerjaanku.model.SubTask
