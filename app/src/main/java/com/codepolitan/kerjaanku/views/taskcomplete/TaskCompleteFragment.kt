@@ -31,17 +31,17 @@ class TaskCompleteFragment : Fragment() {
                 task.mainTask?.isComplete = true
 
                 if (task.subTasks != null){
-                    for (subTask: SubTask in task.subTasks){
+                    for (subTask: SubTask in task.subTasks!!){
                         subTask.isComplete = true
                     }
                 }
             }
 
             showTaskComplete()
-            val taskAdapter = TaskAdapter()
-            taskAdapter.setData(tasks.tasks)
-
-            rvTaskComplete.adapter = taskAdapter
+//            val taskAdapter = TaskAdapter(dbTask, dbSubTask)
+//            taskAdapter.setData(tasks.tasks)
+//
+//            rvTaskComplete.adapter = taskAdapter
         }else{
             hideTaskComplete()
         }

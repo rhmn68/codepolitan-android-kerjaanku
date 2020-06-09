@@ -18,4 +18,7 @@
     <string name="title">Title</string>
     <string name="enter_title">Enter Title...</string>
     <string name="remove_task">Remove Task</string>
+    <string name="please_field_your_title">Please field your title</string>
+    <string name="you_failed_add_data_to_database">You failed add data to database</string>
+    <string name="you_sucess_add_data_to_database">You Success add data to database</string>
 </resources>

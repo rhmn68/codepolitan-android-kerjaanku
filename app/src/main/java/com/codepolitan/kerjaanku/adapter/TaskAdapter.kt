@@ -6,11 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.codepolitan.kerjaanku.R
+import com.codepolitan.kerjaanku.db.DbSubTaskHelper
+import com.codepolitan.kerjaanku.db.DbTaskHelper
+import com.codepolitan.kerjaanku.model.SubTask
 import com.codepolitan.kerjaanku.model.Task
 import kotlinx.android.synthetic.main.item_task.view.*
 
-class TaskAdapter : RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
-    class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
+class TaskAdapter(
+    val dbTask: DbTaskHelper,
+    val dbSubTask: DbSubTaskHelper
+) : RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
+
+    inner class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
         fun bind(task: Task) {
             itemView.tvTitleTask.text = task.mainTask?.title
 
@@ -20,17 +27,17 @@ class TaskAdapter : RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
                 inCompleteTask()
             }
 
-            if (task.mainTask.date != null && task.mainTask.date.isNotEmpty()){
+            if (task.mainTask!!.date != null && task.mainTask!!.date!!.isNotEmpty()){
                 showDateTask()
-                itemView.tvDateTask.text = task.mainTask.date
+                itemView.tvDateTask.text = task.mainTask!!.date
             }else{
                 hideDateTask()
             }
-
+            val subTaskAdapter = SubTaskAdapter()
             if (task.subTasks != null){
                 showSubTasks()
-                val subTaskAdapter = SubTaskAdapter()
-                subTaskAdapter.setData(task.subTasks)
+
+                subTaskAdapter.setData(task.subTasks!!)
 
                 itemView.rvSubTask.adapter = subTaskAdapter
             }else{
@@ -38,12 +45,45 @@ class TaskAdapter : RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
             }
 
             itemView.btnDoneTask.setOnClickListener {
-                if (task.mainTask.isComplete){
-                    inCompleteTask()
-                    task.mainTask.isComplete = false
+                if (task.mainTask!!.isComplete){
+                    task.mainTask!!.isComplete = false
+                    val result = dbTask.updateTask(task.mainTask)
+                    if (result > 0){
+                        inCompleteTask()
+                        if (task.subTasks != null){
+                            var isSuccess = false
+                            for (subTask: SubTask in task.subTasks!!){
+                                subTask.isComplete = false
+                                val resultSubTask = dbSubTask.updateSubTask(subTask)
+                                if (resultSubTask > 0){
+                                    isSuccess = true
+                                }
+                            }
+                            if (isSuccess){
+                                subTaskAdapter.setData(task.subTasks!!)
+                            }
+                        }
+                    }
+
                 }else{
-                    completeTask()
-                    task.mainTask.isComplete = true
+                    task.mainTask!!.isComplete = true
+                    val result = dbTask.updateTask(task.mainTask)
+                    if (result > 0){
+                        completeTask()
+                        if (task.subTasks != null){
+                            var isSuccess = false
+                            for (subTask: SubTask in task.subTasks!!){
+                                subTask.isComplete = true
+                                val resultSubTask = dbSubTask.updateSubTask(subTask)
+                                if (resultSubTask > 0){
+                                    isSuccess = true
+                                }
+                            }
+                            if (isSuccess){
+                                subTaskAdapter.setData(task.subTasks!!)
+                            }
+                        }
+                    }
                 }
             }
         }
