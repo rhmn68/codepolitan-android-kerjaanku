@@ -7,12 +7,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.codepolitan.kerjaanku.R
 import com.codepolitan.kerjaanku.adapter.TaskAdapter
-import com.codepolitan.kerjaanku.model.SubTask
-import com.codepolitan.kerjaanku.model.Task
+import com.codepolitan.kerjaanku.db.DbSubTaskHelper
+import com.codepolitan.kerjaanku.db.DbTaskHelper
 import com.codepolitan.kerjaanku.repository.TaskRepository
 import kotlinx.android.synthetic.main.fragment_task_complete.*
 
 class TaskCompleteFragment : Fragment() {
+
+    private lateinit var dbTask: DbTaskHelper
+    private lateinit var dbSubTask: DbSubTaskHelper
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,24 +27,21 @@ class TaskCompleteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val tasks = TaskRepository.getDataTasks(context)
+        dbTask = DbTaskHelper.getInstance(context)
+        dbSubTask = DbSubTaskHelper.getInStance(context)
+    }
 
-        if (tasks != null){
-            for (task: Task in tasks.tasks!!){
-                task.mainTask?.isComplete = true
+    override fun onResume() {
+        super.onResume()
+        val tasks = TaskRepository.getDataCompleteTaskFromDatabase(dbTask, dbSubTask)
 
-                if (task.subTasks != null){
-                    for (subTask: SubTask in task.subTasks!!){
-                        subTask.isComplete = true
-                    }
-                }
-            }
-
+        if (tasks != null && tasks.isNotEmpty()){
             showTaskComplete()
-//            val taskAdapter = TaskAdapter(dbTask, dbSubTask)
-//            taskAdapter.setData(tasks.tasks)
-//
-//            rvTaskComplete.adapter = taskAdapter
+
+            val taskAdapter = TaskAdapter(dbTask, dbSubTask)
+            taskAdapter.setData(tasks)
+
+            rvTaskComplete.adapter = taskAdapter
         }else{
             hideTaskComplete()
         }

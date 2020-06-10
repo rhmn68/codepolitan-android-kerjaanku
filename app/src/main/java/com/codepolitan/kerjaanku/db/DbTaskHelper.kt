@@ -66,7 +66,7 @@ class DbTaskHelper (context: Context?){
     fun getAllTask(): List<MainTask>?{
         open()
         val tasks = mutableListOf<MainTask>()
-        val query = "SELECT * FROM $TABLE_NAME"
+        val query = "SELECT * FROM $TABLE_NAME WHERE $TASK_IS_COMPLETE = 0"
         val cursor = database.rawQuery(query, null)
         if (cursor != null){
             while (cursor.moveToNext()){
@@ -110,5 +110,38 @@ class DbTaskHelper (context: Context?){
         val result = database.delete(TABLE_NAME, "$TASK_ID = ?", arrayOf(id.toString()))
         close()
         return result
+    }
+
+    fun deleteAllTaskComplete(): Int{
+        open()
+        val result = database.delete(TABLE_NAME, "$TASK_IS_COMPLETE = 0", null)
+        close()
+        return result
+    }
+
+    fun getAllTaskComplete(): List<MainTask>?{
+        open()
+        val tasks = mutableListOf<MainTask>()
+        val query = "SELECT * FROM $TABLE_NAME WHERE $TASK_IS_COMPLETE = 1"
+        val cursor = database.rawQuery(query, null)
+        if (cursor != null){
+            while (cursor.moveToNext()){
+                val id = cursor.getInt(cursor.getColumnIndexOrThrow(TASK_ID))
+                val title = cursor.getString(cursor.getColumnIndexOrThrow(TASK_TITLE))
+                val details = cursor.getString(cursor.getColumnIndexOrThrow(TASK_DETAILS))
+                val date = cursor.getString(cursor.getColumnIndexOrThrow(TASK_DATE))
+                val isComplete = cursor.getInt(cursor.getColumnIndexOrThrow(TASK_IS_COMPLETE))
+                var isCompleteTask: Boolean
+
+                isCompleteTask = isComplete == 1
+                tasks.add(MainTask(id = id, title = title, date = date, isComplete = isCompleteTask, details = details))
+            }
+        }else{
+            return null
+        }
+
+        cursor.close()
+        close()
+        return tasks
     }
 }

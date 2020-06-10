@@ -1,7 +1,6 @@
 package com.codepolitan.kerjaanku.repository
 
 import android.content.Context
-import android.util.Log
 import com.codepolitan.kerjaanku.db.DbSubTaskHelper
 import com.codepolitan.kerjaanku.db.DbTaskHelper
 import com.codepolitan.kerjaanku.model.MainTask
@@ -29,6 +28,30 @@ object TaskRepository {
         val tasks = mutableListOf<Task>()
 
         val mainTasks = dbTaskHelper.getAllTask()
+        tasks.clear()
+        if (mainTasks != null) {
+            for (mainTask: MainTask in mainTasks){
+                val task = Task()
+                task.mainTask = mainTask
+
+                val subTasks = dbSubTaskHelper.getAllSubTask(mainTask.id)
+                if (subTasks!!.isNotEmpty()){
+                    task.subTasks = subTasks
+                }
+
+                tasks.add(task)
+            }
+        }else{
+            return null
+        }
+
+        return tasks
+    }
+
+    fun getDataCompleteTaskFromDatabase(dbTaskHelper: DbTaskHelper, dbSubTaskHelper: DbSubTaskHelper): List<Task>?{
+        val tasks = mutableListOf<Task>()
+
+        val mainTasks = dbTaskHelper.getAllTaskComplete()
         tasks.clear()
         if (mainTasks != null) {
             for (mainTask: MainTask in mainTasks){

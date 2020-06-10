@@ -1,6 +1,7 @@
 package com.codepolitan.kerjaanku.adapter
 
 import android.graphics.Paint
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -50,6 +51,10 @@ class TaskAdapter(
                     val result = dbTask.updateTask(task.mainTask)
                     if (result > 0){
                         inCompleteTask()
+                        Handler().postDelayed({
+                            deleteData(adapterPosition)
+                        },500)
+
                         if (task.subTasks != null){
                             var isSuccess = false
                             for (subTask: SubTask in task.subTasks!!){
@@ -70,6 +75,9 @@ class TaskAdapter(
                     val result = dbTask.updateTask(task.mainTask)
                     if (result > 0){
                         completeTask()
+                        Handler().postDelayed({
+                            deleteData(adapterPosition)
+                        },500)
                         if (task.subTasks != null){
                             var isSuccess = false
                             for (subTask: SubTask in task.subTasks!!){
@@ -118,7 +126,7 @@ class TaskAdapter(
 
     }
 
-    private lateinit var tasks: List<Task>
+    private var tasks = mutableListOf<Task>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_task, parent, false))
@@ -130,7 +138,13 @@ class TaskAdapter(
     }
 
     fun setData(tasks: List<Task>){
-        this.tasks = tasks
+        this.tasks = tasks as MutableList<Task>
         notifyDataSetChanged()
+    }
+
+    fun deleteData(position: Int){
+        tasks.removeAt(position)
+        notifyItemRemoved(position)
+        notifyItemRangeChanged(position, tasks.size)
     }
 }

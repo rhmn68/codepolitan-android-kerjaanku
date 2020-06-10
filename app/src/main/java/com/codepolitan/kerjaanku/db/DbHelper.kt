@@ -46,7 +46,8 @@ class DbHelper(context: Context?)
                 " $SUB_TASK_IS_COMPLETE INTEGER NOT NULL," +
                 " FOREIGN KEY ($SUB_TASK_TASK_ID)" +
                 " REFERENCES $TABLE_TASK ($TASK_ID)" +
-                " ON DELETE CASCADE)"
+                " ON DELETE CASCADE" +
+                " ON UPDATE CASCADE)"
 
         const val QUERY_CREATE_COMPLETE_TASK = "CREATE TABLE $TABLE_COMPLETE_TASK" +
                 " ($COMPLETE_TASK_ID INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -62,7 +63,8 @@ class DbHelper(context: Context?)
                 " $COMPLETE_SUB_TASK_IS_COMPLETE INTEGER NOT NULL," +
                 " FOREIGN KEY ($COMPLETE_SUB_TASK_TASK_ID)" +
                 " REFERENCES $TABLE_COMPLETE_TASK ($COMPLETE_TASK_ID)" +
-                " ON DELETE CASCADE)"
+                " ON DELETE CASCADE" +
+                " ON UPDATE CASCADE)"
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
