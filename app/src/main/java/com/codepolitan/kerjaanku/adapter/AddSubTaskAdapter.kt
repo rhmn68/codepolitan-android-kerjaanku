@@ -87,4 +87,12 @@ class AddSubTaskAdapter : RecyclerView.Adapter<AddSubTaskAdapter.ViewHolder>() {
     fun update(subTask: SubTask, position: Int){
         listAddSubTask[position] = subTask
     }
+
+    fun getData(): List<SubTask>?{
+        return if (listAddSubTask.size > 0){
+            listAddSubTask
+        }else{
+            null
+        }
+    }
 }
