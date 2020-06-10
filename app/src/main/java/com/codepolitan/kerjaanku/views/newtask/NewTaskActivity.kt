@@ -2,6 +2,7 @@ package com.codepolitan.kerjaanku.views.newtask
 
 import android.app.AlertDialog
 import android.app.DatePickerDialog
+import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -133,7 +134,43 @@ class NewTaskActivity : AppCompatActivity() {
         }
 
         if (isEdit){
-            //ToDO Edit
+            val result = dbTaskHelper.updateTask(task?.mainTask)
+            if (result > 0){
+                if (dataSubTasks != null && dataSubTasks.isNotEmpty()){
+                    var isSuccess = false
+                    for (subTask: SubTask in dataSubTasks){
+                        if (subTask.id != null){
+                            val resultSubTask = dbSubTaskHelper.updateSubTask(subTask)
+                            isSuccess = resultSubTask > 0
+                        }else{
+                            subTask.idTask = task?.mainTask?.id
+                            val resultSubTask = dbSubTaskHelper.insert(subTask)
+                            isSuccess = resultSubTask > 0
+                        }
+                    }
+                    if (isSuccess){
+                        val dialog = showSuccessDialog(getString(R.string.sucess_update_data_to_database))
+                        Handler().postDelayed({
+                            dialog.dismiss()
+                        }, 1200)
+                    }else{
+                        val dialog = showFailedDialog(getString(R.string.failed_update_data_to_database))
+                        Handler().postDelayed({
+                            dialog.dismiss()
+                        }, delayedTime)
+                    }
+                }
+                val dialog = showSuccessDialog(getString(R.string.sucess_update_data_to_database))
+                Handler().postDelayed({
+                    dialog.dismiss()
+                    finish()
+                }, 1200)
+            }else{
+                val dialog = showFailedDialog(getString(R.string.failed_update_data_to_database))
+                Handler().postDelayed({
+                    dialog.dismiss()
+                }, delayedTime)
+            }
         }else{
             val result = dbTaskHelper.insert(task?.mainTask)
             if (result > 0){
@@ -212,7 +249,27 @@ class NewTaskActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.action_remove_task -> {
-                toast("Remove Task")
+                AlertDialog.Builder(this)
+                    .setTitle("Delete")
+                    .setMessage("Apakah anda yakin akan delete data ini?")
+                    .setPositiveButton("Yes") { dialog, _ ->
+                        task?.mainTask?.id?.let {
+                            val result = dbTaskHelper.deleteTask(it)
+                            if (result > 0){
+                                val dialogSuccess = showSuccessDialog("Data ini berhasil di delete")
+                                Handler().postDelayed({
+                                    dialogSuccess.dismiss()
+                                    dialog.dismiss()
+                                    finish()
+                                }, delayedTime)
+                            }
+                        }
+                    }
+                    .setNegativeButton("Tidak") { dialog, _ ->
+                        dialog.dismiss()
+                    }
+                    .show()
+
             }
         }
         return super.onOptionsItemSelected(item)
