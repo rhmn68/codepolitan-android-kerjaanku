@@ -4,18 +4,24 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.codepolitan.kerjaanku.R
 import com.codepolitan.kerjaanku.adapter.TaskAdapter
 import com.codepolitan.kerjaanku.db.DbSubTaskHelper
 import com.codepolitan.kerjaanku.db.DbTaskHelper
+import com.codepolitan.kerjaanku.model.Task
 import com.codepolitan.kerjaanku.repository.TaskRepository
+import com.codepolitan.kerjaanku.views.newtask.NewTaskActivity
+import com.codepolitan.kerjaanku.views.newtask.NewTaskActivity.Companion.EXTRA_TASK
 import kotlinx.android.synthetic.main.fragment_home.*
+import org.jetbrains.anko.startActivity
 
 class HomeFragment : Fragment() {
 
     private lateinit var dbTaskHelper: DbTaskHelper
     private lateinit var dbSubTaskHelper: DbSubTaskHelper
+    private lateinit var taskAdapter: TaskAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,6 +34,13 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setup()
+        onClick()
+    }
+
+    private fun onClick() {
+        taskAdapter.onClick {
+            context?.startActivity<NewTaskActivity>(EXTRA_TASK to it)
+        }
     }
 
     override fun onResume() {
@@ -40,7 +53,6 @@ class HomeFragment : Fragment() {
 
         if (tasks != null && tasks.isNotEmpty()){
             showTasks()
-            val taskAdapter = TaskAdapter()
             taskAdapter.setData(tasks)
 
             rvTask.adapter = taskAdapter
@@ -52,6 +64,7 @@ class HomeFragment : Fragment() {
     private fun setup() {
         dbTaskHelper = DbTaskHelper.getInstance(context)
         dbSubTaskHelper = DbSubTaskHelper.getInstance(context)
+        taskAdapter = TaskAdapter()
     }
 
     private fun hideTasks() {

@@ -11,8 +11,12 @@ import kotlinx.android.synthetic.main.item_task.view.*
 
 class TaskAdapter : RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
-        fun bind(task: Task) {
+        fun bind(
+            task: Task,
+            listener: (Task) -> Unit
+        ) {
             itemView.tvTitleTask.text = task.mainTask?.title
+            val subTaskAdapter = SubTaskAdapter()
 
             if (task.mainTask?.isComplete!!){
                 completeTask()
@@ -29,7 +33,6 @@ class TaskAdapter : RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
 
             if (task.subTasks != null){
                 showSubTasks()
-                val subTaskAdapter = SubTaskAdapter()
                 subTaskAdapter.setData(task.subTasks!!)
 
                 itemView.rvSubTask.adapter = subTaskAdapter
@@ -45,6 +48,14 @@ class TaskAdapter : RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
                     completeTask()
                     task.mainTask!!.isComplete = true
                 }
+            }
+
+            itemView.setOnClickListener {
+                listener(task)
+            }
+
+            subTaskAdapter.onClick {
+                listener(task)
             }
         }
 
@@ -79,6 +90,7 @@ class TaskAdapter : RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
     }
 
     private lateinit var tasks: List<Task>
+    private lateinit var listener : (Task) -> Unit
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_task, parent, false))
@@ -86,11 +98,15 @@ class TaskAdapter : RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
     override fun getItemCount(): Int = tasks.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(tasks[position])
+        holder.bind(tasks[position], listener)
     }
 
     fun setData(tasks: List<Task>){
         this.tasks = tasks
         notifyDataSetChanged()
+    }
+
+    fun onClick(listener: (Task) -> Unit){
+        this.listener = listener
     }
 }

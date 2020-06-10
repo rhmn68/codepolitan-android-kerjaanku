@@ -22,4 +22,5 @@
     <string name="please_field_your_title">Please Field Your Title</string>
     <string name="failed_add_data_to_database">Failed add data to Database</string>
     <string name="sucess_add_data_to_database">Success add data to Database</string>
+    <string name="update">Update</string>
 </resources>

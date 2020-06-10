@@ -25,6 +25,10 @@ import org.jetbrains.anko.toast
 
 class NewTaskActivity : AppCompatActivity() {
 
+    companion object{
+        const val EXTRA_TASK = "extra_task"
+    }
+
     private lateinit var addSubTaskAdapter: AddSubTaskAdapter
     private lateinit var dbTaskHelper: DbTaskHelper
     private lateinit var dbSubTaskHelper: DbSubTaskHelper
@@ -45,20 +49,38 @@ class NewTaskActivity : AppCompatActivity() {
     private fun setup() {
         dbTaskHelper = DbTaskHelper.getInstance(this)
         dbSubTaskHelper = DbSubTaskHelper.getInstance(this)
+        addSubTaskAdapter = AddSubTaskAdapter()
 
         getDataExtra()
     }
 
     private fun getDataExtra() {
+        if(intent != null){
+            task = intent.getParcelableExtra(EXTRA_TASK)
+        }
         if (task != null){
+            isEdit = true
+            btnSubmitTask.text = getString(R.string.update)
 
+            setupView(task)
         }else{
             task = Task(mainTask = MainTask())
         }
     }
 
+    private fun setupView(task: Task?) {
+        etTitleTask.setText(task?.mainTask?.title)
+        etAddDetailsTask.setText(task?.mainTask?.details)
+        val dateString = task?.mainTask?.date
+
+        if (dateString != null){
+            btnAddDateTask.text = DateKerjaanKu.dateFromSqlToDateViewTask(dateString)
+            checkIsDateFilled(true)
+        }
+    }
+
     private fun setupAddSubTaskAdapter() {
-        addSubTaskAdapter = AddSubTaskAdapter()
+        task?.subTasks?.let { addSubTaskAdapter.setData(it) }
         rvAddSubTask.adapter = addSubTaskAdapter
     }
 
@@ -181,7 +203,9 @@ class NewTaskActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.new_task_menu, menu)
+        if (isEdit){
+            menuInflater.inflate(R.menu.new_task_menu, menu)
+        }
         return super.onCreateOptionsMenu(menu)
     }
 

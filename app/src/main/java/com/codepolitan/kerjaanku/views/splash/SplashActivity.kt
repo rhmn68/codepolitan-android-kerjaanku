@@ -1,9 +1,8 @@
 package com.codepolitan.kerjaanku.views.splash
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import androidx.appcompat.app.AppCompatActivity
 import com.codepolitan.kerjaanku.R
 import com.codepolitan.kerjaanku.views.main.MainActivity
 import org.jetbrains.anko.startActivity

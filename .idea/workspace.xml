@@ -169,10 +169,10 @@
     </ignored-roots>
   </component>
   <component name="WindowStateProjectService">
-    <state x="404" y="53" key="#com.intellij.ide.util.MemberChooser" timestamp="1591797644570">
+    <state x="404" y="53" key="#com.intellij.ide.util.MemberChooser" timestamp="1591804366648">
       <screen x="0" y="23" width="1366" height="745" />
     </state>
-    <state x="404" y="53" key="#com.intellij.ide.util.MemberChooser/0.23.1366.745@0.23.1366.745" timestamp="1591797644570" />
+    <state x="404" y="53" key="#com.intellij.ide.util.MemberChooser/0.23.1366.745@0.23.1366.745" timestamp="1591804366648" />
     <state x="358" y="92" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1591162204440">
       <screen x="0" y="23" width="1366" height="745" />
     </state>
@@ -181,26 +181,26 @@
       <screen x="0" y="23" width="1366" height="745" />
     </state>
     <state x="271" y="152" key="AndroidCreateResourceFileDialog/0.23.1366.745@0.23.1366.745" timestamp="1591320313940" />
-    <state x="532" y="221" key="AndroidCreateXmlResourceDialog" timestamp="1591802663674">
+    <state x="532" y="221" key="AndroidCreateXmlResourceDialog" timestamp="1591805212206">
       <screen x="0" y="23" width="1366" height="745" />
     </state>
-    <state x="532" y="221" key="AndroidCreateXmlResourceDialog/0.23.1366.745@0.23.1366.745" timestamp="1591802663674" />
-    <state width="1312" height="257" key="GridCell.Tab.0.bottom" timestamp="1591162167659">
+    <state x="532" y="221" key="AndroidCreateXmlResourceDialog/0.23.1366.745@0.23.1366.745" timestamp="1591805212206" />
+    <state width="1312" height="256" key="GridCell.Tab.0.bottom" timestamp="1591805614452">
       <screen x="0" y="23" width="1366" height="745" />
     </state>
-    <state width="1312" height="257" key="GridCell.Tab.0.bottom/0.23.1366.745@0.23.1366.745" timestamp="1591162167659" />
-    <state width="1312" height="257" key="GridCell.Tab.0.center" timestamp="1591162167658">
+    <state width="1312" height="256" key="GridCell.Tab.0.bottom/0.23.1366.745@0.23.1366.745" timestamp="1591805614452" />
+    <state width="1312" height="256" key="GridCell.Tab.0.center" timestamp="1591805614449">
       <screen x="0" y="23" width="1366" height="745" />
     </state>
-    <state width="1312" height="257" key="GridCell.Tab.0.center/0.23.1366.745@0.23.1366.745" timestamp="1591162167658" />
-    <state width="1312" height="257" key="GridCell.Tab.0.left" timestamp="1591162167658">
+    <state width="1312" height="256" key="GridCell.Tab.0.center/0.23.1366.745@0.23.1366.745" timestamp="1591805614449" />
+    <state width="1312" height="256" key="GridCell.Tab.0.left" timestamp="1591805614447">
       <screen x="0" y="23" width="1366" height="745" />
     </state>
-    <state width="1312" height="257" key="GridCell.Tab.0.left/0.23.1366.745@0.23.1366.745" timestamp="1591162167658" />
-    <state width="1312" height="257" key="GridCell.Tab.0.right" timestamp="1591162167659">
+    <state width="1312" height="256" key="GridCell.Tab.0.left/0.23.1366.745@0.23.1366.745" timestamp="1591805614445" />
+    <state width="1312" height="256" key="GridCell.Tab.0.right" timestamp="1591805614451">
       <screen x="0" y="23" width="1366" height="745" />
     </state>
-    <state width="1312" height="257" key="GridCell.Tab.0.right/0.23.1366.745@0.23.1366.745" timestamp="1591162167659" />
+    <state width="1312" height="256" key="GridCell.Tab.0.right/0.23.1366.745@0.23.1366.745" timestamp="1591805614451" />
     <state x="264" y="23" width="838" height="1032" key="search.everywhere.popup" timestamp="1591797714652">
       <screen x="0" y="23" width="1366" height="745" />
     </state>

@@ -11,7 +11,10 @@ import kotlinx.android.synthetic.main.item_sub_task.view.*
 
 class SubTaskAdapter : RecyclerView.Adapter<SubTaskAdapter.ViewHolder>() {
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
-        fun bind(subTask: SubTask) {
+        fun bind(
+            subTask: SubTask,
+            listener: (View) -> Unit
+        ) {
             itemView.tvTitleSubTask.text = subTask.title
 
             if (subTask.isComplete){
@@ -29,6 +32,10 @@ class SubTaskAdapter : RecyclerView.Adapter<SubTaskAdapter.ViewHolder>() {
                     subTask.isComplete = true
                 }
             }
+
+            itemView.setOnClickListener {
+                listener(it)
+            }
         }
 
         private fun completeSubTask() {
@@ -43,6 +50,7 @@ class SubTaskAdapter : RecyclerView.Adapter<SubTaskAdapter.ViewHolder>() {
     }
 
     private lateinit var subTasks: List<SubTask>
+    private lateinit var listener: (View) -> Unit
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_sub_task, parent, false))
@@ -50,11 +58,15 @@ class SubTaskAdapter : RecyclerView.Adapter<SubTaskAdapter.ViewHolder>() {
     override fun getItemCount(): Int = subTasks.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(subTasks[position])
+        holder.bind(subTasks[position], listener)
     }
 
     fun setData(subTasks: List<SubTask>){
         this.subTasks = subTasks
         notifyDataSetChanged()
+    }
+
+    fun onClick(listener: (View) -> Unit){
+        this.listener = listener
     }
 }
