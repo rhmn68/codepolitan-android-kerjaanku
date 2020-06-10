@@ -20,9 +20,9 @@ class TaskAdapter : RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
                 inCompleteTask()
             }
 
-            if (task.mainTask.date != null && task.mainTask.date.isNotEmpty()){
+            if (task.mainTask!!.date != null && task.mainTask!!.date!!.isNotEmpty()){
                 showDateTask()
-                itemView.tvDateTask.text = task.mainTask.date
+                itemView.tvDateTask.text = task.mainTask!!.date
             }else{
                 hideDateTask()
             }
@@ -30,7 +30,7 @@ class TaskAdapter : RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
             if (task.subTasks != null){
                 showSubTasks()
                 val subTaskAdapter = SubTaskAdapter()
-                subTaskAdapter.setData(task.subTasks)
+                subTaskAdapter.setData(task.subTasks!!)
 
                 itemView.rvSubTask.adapter = subTaskAdapter
             }else{
@@ -38,12 +38,12 @@ class TaskAdapter : RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
             }
 
             itemView.btnDoneTask.setOnClickListener {
-                if (task.mainTask.isComplete){
+                if (task.mainTask!!.isComplete){
                     inCompleteTask()
-                    task.mainTask.isComplete = false
+                    task.mainTask!!.isComplete = false
                 }else{
                     completeTask()
-                    task.mainTask.isComplete = true
+                    task.mainTask!!.isComplete = true
                 }
             }
         }

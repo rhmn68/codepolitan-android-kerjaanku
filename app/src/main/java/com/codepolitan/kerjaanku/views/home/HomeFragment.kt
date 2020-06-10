@@ -7,10 +7,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.codepolitan.kerjaanku.R
 import com.codepolitan.kerjaanku.adapter.TaskAdapter
+import com.codepolitan.kerjaanku.db.DbSubTaskHelper
+import com.codepolitan.kerjaanku.db.DbTaskHelper
 import com.codepolitan.kerjaanku.repository.TaskRepository
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
+
+    private lateinit var dbTaskHelper: DbTaskHelper
+    private lateinit var dbSubTaskHelper: DbSubTaskHelper
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -22,17 +27,31 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val tasks = TaskRepository.getDataTasks(context)
+        setup()
+    }
 
-        if (tasks != null){
+    override fun onResume() {
+        super.onResume()
+        getDataTask()
+    }
+
+    private fun getDataTask() {
+        val tasks = TaskRepository.getDataTaskFromDatabase(dbTaskHelper, dbSubTaskHelper)
+
+        if (tasks != null && tasks.isNotEmpty()){
             showTasks()
             val taskAdapter = TaskAdapter()
-            tasks.tasks?.let { taskAdapter.setData(it) }
+            taskAdapter.setData(tasks)
 
             rvTask.adapter = taskAdapter
         }else{
             hideTasks()
         }
+    }
+
+    private fun setup() {
+        dbTaskHelper = DbTaskHelper.getInstance(context)
+        dbSubTaskHelper = DbSubTaskHelper.getInstance(context)
     }
 
     private fun hideTasks() {

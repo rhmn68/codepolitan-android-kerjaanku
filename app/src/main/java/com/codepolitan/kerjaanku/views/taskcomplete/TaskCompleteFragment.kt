@@ -31,7 +31,7 @@ class TaskCompleteFragment : Fragment() {
                 task.mainTask?.isComplete = true
 
                 if (task.subTasks != null){
-                    for (subTask: SubTask in task.subTasks){
+                    for (subTask: SubTask in task.subTasks!!){
                         subTask.isComplete = true
                     }
                 }

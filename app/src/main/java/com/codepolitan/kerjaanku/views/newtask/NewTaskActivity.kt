@@ -123,24 +123,24 @@ class NewTaskActivity : AppCompatActivity() {
                         isSuccess = resultSubTask > 0
                     }
                     if (isSuccess){
-                        val dialog = showSuccessDialog("Success add data to Database")
+                        val dialog = showSuccessDialog(getString(R.string.sucess_add_data_to_database))
                         Handler().postDelayed({
                             dialog.dismiss()
                         }, 1200)
                     }else{
-                        val dialog = showFailedDialog("Failed add data to Database")
+                        val dialog = showFailedDialog(getString(R.string.failed_add_data_to_database))
                         Handler().postDelayed({
                             dialog.dismiss()
                         }, delayedTime)
                     }
                 }
-                val dialog = showSuccessDialog("Success add data to Database")
+                val dialog = showSuccessDialog(getString(R.string.sucess_add_data_to_database))
                 Handler().postDelayed({
                     dialog.dismiss()
                     finish()
                 }, 1200)
             }else{
-                val dialog = showFailedDialog("Failed add data to Database")
+                val dialog = showFailedDialog(getString(R.string.failed_add_data_to_database))
                 Handler().postDelayed({
                     dialog.dismiss()
                 }, delayedTime)
