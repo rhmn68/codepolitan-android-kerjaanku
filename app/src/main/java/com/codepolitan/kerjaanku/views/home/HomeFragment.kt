@@ -4,13 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.codepolitan.kerjaanku.R
 import com.codepolitan.kerjaanku.adapter.TaskAdapter
 import com.codepolitan.kerjaanku.db.DbSubTaskHelper
 import com.codepolitan.kerjaanku.db.DbTaskHelper
-import com.codepolitan.kerjaanku.model.Task
 import com.codepolitan.kerjaanku.repository.TaskRepository
 import com.codepolitan.kerjaanku.views.newtask.NewTaskActivity
 import com.codepolitan.kerjaanku.views.newtask.NewTaskActivity.Companion.EXTRA_TASK
@@ -64,7 +62,7 @@ class HomeFragment : Fragment() {
     private fun setup() {
         dbTaskHelper = DbTaskHelper.getInstance(context)
         dbSubTaskHelper = DbSubTaskHelper.getInstance(context)
-        taskAdapter = TaskAdapter()
+        taskAdapter = TaskAdapter(dbTaskHelper, dbSubTaskHelper)
     }
 
     private fun hideTasks() {

@@ -2,17 +2,13 @@ package com.codepolitan.kerjaanku.views.newtask
 
 import android.app.AlertDialog
 import android.app.DatePickerDialog
-import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.DatePicker
-import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.codepolitan.kerjaanku.R
 import com.codepolitan.kerjaanku.adapter.AddSubTaskAdapter
 import com.codepolitan.kerjaanku.db.DbSubTaskHelper
@@ -22,7 +18,6 @@ import com.codepolitan.kerjaanku.model.SubTask
 import com.codepolitan.kerjaanku.model.Task
 import com.codepolitan.kerjaanku.util.DateKerjaanKu
 import kotlinx.android.synthetic.main.activity_new_task.*
-import org.jetbrains.anko.toast
 
 class NewTaskActivity : AppCompatActivity() {
 
@@ -50,7 +45,7 @@ class NewTaskActivity : AppCompatActivity() {
     private fun setup() {
         dbTaskHelper = DbTaskHelper.getInstance(this)
         dbSubTaskHelper = DbSubTaskHelper.getInstance(this)
-        addSubTaskAdapter = AddSubTaskAdapter()
+        addSubTaskAdapter = AddSubTaskAdapter(dbSubTaskHelper)
 
         getDataExtra()
     }

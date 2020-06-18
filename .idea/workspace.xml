@@ -52,12 +52,13 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
     <key name="android.template.1406459614">
@@ -185,22 +186,34 @@
       <screen x="0" y="23" width="1366" height="745" />
     </state>
     <state x="532" y="221" key="AndroidCreateXmlResourceDialog/0.23.1366.745@0.23.1366.745" timestamp="1591805212206" />
-    <state width="1312" height="256" key="GridCell.Tab.0.bottom" timestamp="1591805848354">
+    <state width="1312" height="256" key="GridCell.Tab.0.bottom" timestamp="1591833428126">
       <screen x="0" y="23" width="1366" height="745" />
     </state>
-    <state width="1312" height="256" key="GridCell.Tab.0.bottom/0.23.1366.745@0.23.1366.745" timestamp="1591805848354" />
-    <state width="1312" height="256" key="GridCell.Tab.0.center" timestamp="1591805848353">
+    <state width="1312" height="256" key="GridCell.Tab.0.bottom/0.23.1366.745@0.23.1366.745" timestamp="1591833428126" />
+    <state width="1312" height="256" key="GridCell.Tab.0.center" timestamp="1591833428124">
       <screen x="0" y="23" width="1366" height="745" />
     </state>
-    <state width="1312" height="256" key="GridCell.Tab.0.center/0.23.1366.745@0.23.1366.745" timestamp="1591805848353" />
-    <state width="1312" height="256" key="GridCell.Tab.0.left" timestamp="1591805848353">
+    <state width="1312" height="256" key="GridCell.Tab.0.center/0.23.1366.745@0.23.1366.745" timestamp="1591833428124" />
+    <state width="1312" height="256" key="GridCell.Tab.0.left" timestamp="1591833428123">
       <screen x="0" y="23" width="1366" height="745" />
     </state>
-    <state width="1312" height="256" key="GridCell.Tab.0.left/0.23.1366.745@0.23.1366.745" timestamp="1591805848353" />
-    <state width="1312" height="256" key="GridCell.Tab.0.right" timestamp="1591805848354">
+    <state width="1312" height="256" key="GridCell.Tab.0.left/0.23.1366.745@0.23.1366.745" timestamp="1591833428123" />
+    <state width="1312" height="256" key="GridCell.Tab.0.right" timestamp="1591833428125">
       <screen x="0" y="23" width="1366" height="745" />
     </state>
-    <state width="1312" height="256" key="GridCell.Tab.0.right/0.23.1366.745@0.23.1366.745" timestamp="1591805848354" />
+    <state width="1312" height="256" key="GridCell.Tab.0.right/0.23.1366.745@0.23.1366.745" timestamp="1591833428125" />
+    <state x="271" y="145" key="IDE.errors.dialog" timestamp="1592363299449">
+      <screen x="0" y="23" width="1366" height="745" />
+    </state>
+    <state x="271" y="145" key="IDE.errors.dialog/0.23.1366.745@0.23.1366.745" timestamp="1592363299449" />
+    <state x="68" y="23" key="SettingsEditor" timestamp="1592442481540">
+      <screen x="0" y="23" width="1366" height="745" />
+    </state>
+    <state x="68" y="23" key="SettingsEditor/0.23.1366.745@0.23.1366.745" timestamp="1592442481540" />
+    <state x="0" y="23" key="refactoring.ChangeSignatureDialog" timestamp="1591834794967">
+      <screen x="0" y="23" width="1366" height="745" />
+    </state>
+    <state x="0" y="23" key="refactoring.ChangeSignatureDialog/0.23.1366.745@0.23.1366.745" timestamp="1591834794967" />
     <state x="264" y="23" width="838" height="1032" key="search.everywhere.popup" timestamp="1591797714652">
       <screen x="0" y="23" width="1366" height="745" />
     </state>

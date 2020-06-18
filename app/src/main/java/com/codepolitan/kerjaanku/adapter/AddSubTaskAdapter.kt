@@ -8,11 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.codepolitan.kerjaanku.R
+import com.codepolitan.kerjaanku.db.DbSubTaskHelper
 import com.codepolitan.kerjaanku.model.SubTask
 import kotlinx.android.synthetic.main.item_add_sub_task.view.*
-import kotlinx.android.synthetic.main.item_sub_task.view.*
 
-class AddSubTaskAdapter : RecyclerView.Adapter<AddSubTaskAdapter.ViewHolder>() {
+class AddSubTaskAdapter(private val dbSubTaskHelper: DbSubTaskHelper) : RecyclerView.Adapter<AddSubTaskAdapter.ViewHolder>() {
     inner class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
         fun bind(subTask: SubTask) {
             if (subTask.title != null){
@@ -26,7 +26,12 @@ class AddSubTaskAdapter : RecyclerView.Adapter<AddSubTaskAdapter.ViewHolder>() {
             }
 
             itemView.btnRemoveSubTask.setOnClickListener {
-                deleteTask(adapterPosition)
+                if (subTask.id != null){
+                    val result = dbSubTaskHelper.deleteSubTask(subTask.id)
+                    if (result > 0){
+                        deleteTask(adapterPosition)
+                    }
+                }
             }
 
             itemView.etTitleSubTask.addTextChangedListener(object : TextWatcher{
@@ -48,6 +53,22 @@ class AddSubTaskAdapter : RecyclerView.Adapter<AddSubTaskAdapter.ViewHolder>() {
                 }
 
             })
+
+            itemView.btnCompleteSubTask.setOnClickListener {
+                if (subTask.isComplete){
+                    subTask.isComplete = false
+                    val result = dbSubTaskHelper.updateSubTask(subTask)
+                    if (result > 0){
+                        inCompleteTask()
+                    }
+                }else{
+                    subTask.isComplete = true
+                    val result = dbSubTaskHelper.updateSubTask(subTask)
+                    if (result > 0){
+                        completeTask()
+                    }
+                }
+            }
         }
 
         private fun inCompleteTask() {

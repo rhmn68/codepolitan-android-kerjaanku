@@ -6,11 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.codepolitan.kerjaanku.R
+import com.codepolitan.kerjaanku.db.DbSubTaskHelper
 import com.codepolitan.kerjaanku.model.SubTask
 import kotlinx.android.synthetic.main.item_sub_task.view.*
 
-class SubTaskAdapter : RecyclerView.Adapter<SubTaskAdapter.ViewHolder>() {
-    class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
+class SubTaskAdapter(private val dbSubTaskHelper: DbSubTaskHelper) : RecyclerView.Adapter<SubTaskAdapter.ViewHolder>() {
+    inner class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
         fun bind(
             subTask: SubTask,
             listener: (View) -> Unit
@@ -25,11 +26,17 @@ class SubTaskAdapter : RecyclerView.Adapter<SubTaskAdapter.ViewHolder>() {
 
             itemView.btnDoneSubTask.setOnClickListener {
                 if (subTask.isComplete){
-                    inCompleteSubTask()
                     subTask.isComplete = false
+                    val result = dbSubTaskHelper.updateSubTask(subTask)
+                    if (result > 0){
+                        inCompleteSubTask()
+                    }
                 }else{
-                    completeSubTask()
                     subTask.isComplete = true
+                    val result = dbSubTaskHelper.updateSubTask(subTask)
+                    if (result > 0){
+                        completeSubTask()
+                    }
                 }
             }
 
